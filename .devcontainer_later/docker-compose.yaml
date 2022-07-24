@@ -2,10 +2,13 @@ version: '3.8'
 
 services:
   api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     container_name: heroku-web
     ports:
-      - 3000:3000
+      - 9000:9000
+      # - 3000:3000
     environment:
       PORT: 3000
       PG_HOST: db
@@ -15,7 +18,7 @@ services:
       PG_PORT: 5432
 
     volumes:
-      - .:/app/
+      - ..:/app/
 
     depends_on:
       - db
@@ -25,7 +28,7 @@ services:
     container_name: hello_db
     restart: always
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - ../pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
     environment:
