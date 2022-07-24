@@ -25,7 +25,7 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	}
-
+	//
 	database.ConnectDb()
 	app := fiber.New()
 
@@ -40,5 +40,5 @@ func main() {
 	port := os.Getenv("PORT")
 	log.Println("port", port)
 
-	log.Fatal(app.Listen(":" + port))
+	log.Fatal(app.Listen(":" + "3002"))
 }
