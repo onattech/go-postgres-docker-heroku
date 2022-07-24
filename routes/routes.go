@@ -2,8 +2,8 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/zeimedee/go-postgres/database"
-	"github.com/zeimedee/go-postgres/models"
+	"github.com/onattech/go-postgres-docker-heroku/database"
+	"github.com/onattech/go-postgres-docker-heroku/models"
 )
 
 //Hello
