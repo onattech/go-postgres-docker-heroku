@@ -9,3 +9,9 @@ docker-compose up --build
 ```bash
 https://stackoverflow.com/a/62014907/711609
 ```
+
+### Features
+​- [x]  Dockerized
+
+​- [ ] 
+​
