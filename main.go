@@ -25,7 +25,7 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	}
-	//
+
 	database.ConnectDb()
 	app := fiber.New()
 
@@ -36,7 +36,7 @@ func main() {
 	app.Use(func(c *fiber.Ctx) error {
 		return c.SendStatus(404)
 	})
-
+	//
 	port := os.Getenv("PORT")
 	log.Println("port", port)
 
