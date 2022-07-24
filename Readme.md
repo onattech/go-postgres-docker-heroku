@@ -1,1 +1,11 @@
-### Rest api built with Go Fiber and PostgreSql and deployed to Heroku
+# Go Fiber REST api with postgres deployed to Heroku
+
+### Getting started
+```bash
+docker-compose up --build
+```
+
+### Give permissions to pgdata folder
+```bash
+https://stackoverflow.com/a/62014907/711609
+```

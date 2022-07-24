@@ -6,63 +6,53 @@ import (
 	"github.com/onattech/go-postgres-docker-heroku/models"
 )
 
-//Hello
+// Hello
 func Hello(c *fiber.Ctx) error {
 	return c.SendString("fiber")
 }
 
-//AddBook
-func AddBook(c *fiber.Ctx) error {
-	book := new(models.Book)
-	if err := c.BodyParser(book); err != nil {
+// Add Product
+func AddProduct(c *fiber.Ctx) error {
+	product := new(models.Product)
+	if err := c.BodyParser(product); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	database.DB.Db.Create(&book)
+	database.DB.Create(&product)
 
-	return c.Status(200).JSON(book)
+	return c.Status(200).JSON(product)
 }
 
-//AllBooks
-func AllBooks(c *fiber.Ctx) error {
-	books := []models.Book{}
-	database.DB.Db.Find(&books)
-
-	return c.Status(200).JSON(books)
+// All Products
+func AllProducts(c *fiber.Ctx) error {
+	products := []models.Product{}
+	database.DB.Find(&products)
+	return c.Status(200).JSON(products)
 }
 
-//Book
-func Book(c *fiber.Ctx) error {
-	book := []models.Book{}
-	title := new(models.Book)
-	if err := c.BodyParser(title); err != nil {
-		return c.Status(400).JSON(err.Error())
-	}
-	database.DB.Db.Where("title = ?", title.Title).Find(&book)
-	return c.Status(200).JSON(book)
+// Single Product
+func Product(c *fiber.Ctx) error {
+	product := models.Product{}
+	database.DB.Where("id = ?", c.Params("id")).Find(&product)
+	return c.Status(200).JSON(product)
 }
 
-//Update
+// Update
 func Update(c *fiber.Ctx) error {
-	book := []models.Book{}
-	title := new(models.Book)
-	if err := c.BodyParser(title); err != nil {
+	product := new(models.Product)
+	if err := c.BodyParser(product); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	database.DB.Db.Model(&book).Where("title = ?", title.Title).Update("author", title.Author)
+	database.DB.Model(&product).Where("id = ?", c.Params("id")).Updates(product)
 
-	return c.Status(400).JSON("updated")
+	return c.Status(200).JSON("updated")
 }
 
-//Delete
+// Delete
 func Delete(c *fiber.Ctx) error {
-	book := []models.Book{}
-	title := new(models.Book)
-	if err := c.BodyParser(title); err != nil {
-		return c.Status(400).JSON(err.Error())
-	}
-	database.DB.Db.Where("title = ?", title.Title).Delete(&book)
+	product := []models.Product{}
+	database.DB.Where("id = ?", c.Params("id")).Delete(&product)
 
 	return c.Status(200).JSON("deleted")
 }

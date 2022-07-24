@@ -1,6 +1,7 @@
 package database
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -10,15 +11,21 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-type Dbinstance struct {
-	Db *gorm.DB
-}
-
-var DB Dbinstance
+var DB *gorm.DB
 
 // connectDb
 func ConnectDb() {
-	dsn := "host=localhost user=postgres password='' dbname=go-db port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	var dsn string
+
+	if os.Getenv("ENV") == "PROD" {
+		dsn = os.Getenv("DATABASE_URL")
+	} else {
+		dsn = fmt.Sprintf(
+			"host=%v user=%v password=%v dbname=%v port=%v",
+			os.Getenv("PG_HOST"), os.Getenv("PG_USER"), os.Getenv("PG_PASS"),
+			os.Getenv("PG_DBNM"), os.Getenv("PG_PORT"),
+		)
+	}
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
@@ -32,9 +39,8 @@ func ConnectDb() {
 	log.Println("connected")
 	db.Logger = logger.Default.LogMode(logger.Info)
 	log.Println("running migrations")
-	db.AutoMigrate(&models.Book{})
+	db.AutoMigrate(&models.Product{})
 
-	DB = Dbinstance{
-		Db: db,
-	}
+	DB = db
+
 }

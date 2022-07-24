@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: heroku-web
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      PG_HOST: db
+      PG_USER: postgres
+      PG_PASS: postgres
+      PG_DBNM: postgres
+      PG_PORT: 5432
+
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    container_name: hello_db
+    restart: always
+    # volumes:
+    # - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      # POSTGRES_USER: postgres #Default already
+      POSTGRES_PASSWORD: postgres
+      # POSTGRES_DB: postgres #Defaults to {POSTGRES_USER} already
