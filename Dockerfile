@@ -26,13 +26,13 @@ COPY ./ ./
 # Build the binary, call it main, put in the root directory in the container
 RUN go build -o main /app/
 
-# CMD [ "air" ]
+CMD [ "air" ]
 
 
 # # # # # # #
 #  Runner   #
 # # # # # # #
 
-FROM alpine:3.16 as runner
-COPY --from=builder /app/main /main
-ENTRYPOINT [ "/main" ]
+# FROM alpine:3.16 as runner
+# COPY --from=builder /app/main /main
+# ENTRYPOINT [ "/main" ]
