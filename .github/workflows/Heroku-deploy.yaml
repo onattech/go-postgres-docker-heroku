@@ -10,6 +10,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "pwd"
+      - run: echo "ls"
       - name: Build, Push and Deploy to Heroku # set whatever name you want to this step
         id: heroku
         uses: jctaveras/heroku-deploy@v3.1.0 # use the latest version of the action
@@ -20,7 +23,7 @@ jobs:
           api_key: 6a1ce40f-ebdb-4620-acd1-56a545776f2c # your heroku api key
           # app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
           app_name: go-fiber-gorm-postgresql # you aplication name
-          echo: "pwd"
+         
 #           echo: "ls"
           dockerfile_path: '.' # set the path to the folder where the Dockerfile is located
           process_type: 'web' # Specify the process type you want to build and release
