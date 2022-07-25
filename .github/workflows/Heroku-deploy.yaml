@@ -14,8 +14,12 @@ jobs:
         id: heroku
         uses: jctaveras/heroku-deploy@v3.1.0 # use the latest version of the action
         with:
-          email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
-          app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
+          # email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
+          email: codingforone@protonmail.com # your heroku email
+          # api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
+          api_key: 6a1ce40f-ebdb-4620-acd1-56a545776f2c # your heroku api key
+          # app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
+          app_name: go-fiber-gorm-postgresql # you aplication name
+          
           dockerfile_path: '.' # set the path to the folder where the Dockerfile is located
           process_type: 'web' # Specify the process type you want to build and release
