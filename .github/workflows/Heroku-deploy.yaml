@@ -40,9 +40,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: ls
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: 6a1ce40f-ebdb-4620-acd1-56a545776f2c
-          heroku_app_name: go-fiber-gorm-postgresql #Must be unique in Heroku
-          heroku_email: codingforone@protonmail.com
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
           usedocker: true
