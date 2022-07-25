@@ -10,9 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "pwd"
-      - run: echo "ls"
+      - run: pwd
+      - run: ls
       - name: Build, Push and Deploy to Heroku # set whatever name you want to this step
         id: heroku
         uses: jctaveras/heroku-deploy@v3.1.0 # use the latest version of the action
