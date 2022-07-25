@@ -8,7 +8,7 @@ import (
 
 // Hello
 func Hello(c *fiber.Ctx) error {
-	return c.SendString("fiber helooo!!!")
+	return c.SendString("fiber hellooo!!!")
 }
 
 // Add Product
