@@ -1,0 +1,163 @@
+basePath: /
+definitions:
+  models.Product:
+    properties:
+      name:
+        example: Great product
+        type: string
+      price:
+        example: 20
+        type: number
+      stock:
+        example: 10
+        type: integer
+    type: object
+info:
+  contact:
+    name: Onat
+  description: This is a simple API for Products
+  license:
+    name: MIT
+    url: https://mit-license.org/
+  title: Products App
+  version: "1.0"
+paths:
+  /product:
+    post:
+      consumes:
+      - application/json
+      description: Register product
+      parameters:
+      - description: Register product
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/models.Product'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Product'
+        "400":
+          description: error
+          schema:
+            type: string
+      summary: Add a new product
+      tags:
+      - products
+  /product/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove product by ID
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: deleted
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "503":
+          description: error
+          schema:
+            type: string
+      summary: Remove product by ID
+      tags:
+      - products
+    get:
+      consumes:
+      - application/json
+      description: Get product by ID
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Product'
+        "404":
+          description: error
+          schema:
+            type: string
+        "503":
+          description: error
+          schema:
+            type: string
+      summary: Get product by ID
+      tags:
+      - products
+    put:
+      consumes:
+      - application/json
+      description: Update product by ID
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update product
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/models.Product'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: updated
+          schema:
+            type: string
+        "404":
+          description: error
+          schema:
+            type: string
+        "503":
+          description: error
+          schema:
+            type: string
+      summary: Update product by ID
+      tags:
+      - products
+  /products:
+    get:
+      consumes:
+      - application/json
+      description: Get all products
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Product'
+            type: array
+        "503":
+          description: error
+          schema:
+            type: string
+      summary: Get all products
+      tags:
+      - products
+swagger: "2.0"
