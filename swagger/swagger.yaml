@@ -22,7 +22,7 @@ info:
   title: Products App
   version: "1.0"
 paths:
-  /product:
+  /api/product:
     post:
       consumes:
       - application/json
@@ -48,7 +48,7 @@ paths:
       summary: Add a new product
       tags:
       - products
-  /product/{id}:
+  /api/product/{id}:
     delete:
       consumes:
       - application/json
@@ -139,7 +139,7 @@ paths:
       summary: Update product by ID
       tags:
       - products
-  /products:
+  /api/products:
     get:
       consumes:
       - application/json

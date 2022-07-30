@@ -14,7 +14,7 @@
     },
     "basePath": "/",
     "paths": {
-        "/product": {
+        "/api/product": {
             "post": {
                 "description": "Register product",
                 "consumes": [
@@ -54,7 +54,7 @@
                 }
             }
         },
-        "/product/{id}": {
+        "/api/product/{id}": {
             "get": {
                 "description": "Get product by ID",
                 "consumes": [
@@ -191,7 +191,7 @@
                 }
             }
         },
-        "/products": {
+        "/api/products": {
             "get": {
                 "description": "Get all products",
                 "consumes": [

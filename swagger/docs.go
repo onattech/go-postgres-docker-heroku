@@ -22,7 +22,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/product": {
+        "/api/product": {
             "post": {
                 "description": "Register product",
                 "consumes": [
@@ -62,7 +62,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/product/{id}": {
+        "/api/product/{id}": {
             "get": {
                 "description": "Get product by ID",
                 "consumes": [
@@ -199,7 +199,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/products": {
+        "/api/products": {
             "get": {
                 "description": "Get all products",
                 "consumes": [
