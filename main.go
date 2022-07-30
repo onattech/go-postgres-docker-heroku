@@ -6,6 +6,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/swagger"
 	"github.com/joho/godotenv"
 	"github.com/onattech/go-postgres-docker-heroku/database"
@@ -41,10 +42,13 @@ func main() {
 
 	database.ConnectDb()
 	app := fiber.New()
+	app.Use(cors.New())
+	app.Use(logger.New(logger.Config{
+		Format:     "${white}${pid} ${cyan}[${time}] ${red}${status} ${latency} ${blue}${method} ${white}${path}\n",
+		TimeFormat: "02-Jan-2006 15:04:05",
+	}))
 
 	setUpRoutes(app)
-
-	app.Use(cors.New())
 
 	app.Use(func(c *fiber.Ctx) error {
 		return c.SendStatus(404)
