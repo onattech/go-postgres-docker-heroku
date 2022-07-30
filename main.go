@@ -49,9 +49,8 @@ func main() {
 	app.Use(func(c *fiber.Ctx) error {
 		return c.SendStatus(404)
 	})
-	//
+
 	port := os.Getenv("PORT")
-	log.Println("port", port)
 
 	log.Fatal(app.Listen(":" + port))
 }
