@@ -26,7 +26,7 @@ paths:
     post:
       consumes:
       - application/json
-      description: Register product
+      description: Add a new product
       parameters:
       - description: Register product
         in: body
@@ -42,12 +42,12 @@ paths:
           schema:
             $ref: '#/definitions/models.Product'
         "400":
-          description: error
+          description: Bad Request
           schema:
             type: string
       summary: Add a new product
       tags:
-      - products
+      - Products
   /api/product/{id}:
     delete:
       consumes:
@@ -63,7 +63,7 @@ paths:
       - application/json
       responses:
         "200":
-          description: deleted
+          description: OK
           schema:
             type: string
         "404":
@@ -71,18 +71,18 @@ paths:
           schema:
             type: string
         "503":
-          description: error
+          description: Service Unavailable
           schema:
             type: string
       summary: Remove product by ID
       tags:
-      - products
+      - Products
     get:
       consumes:
       - application/json
       description: Get product by ID
       parameters:
-      - description: Product ID
+      - description: GetSingleProduct ID
         in: path
         name: id
         required: true
@@ -95,27 +95,27 @@ paths:
           schema:
             $ref: '#/definitions/models.Product'
         "404":
-          description: error
+          description: Not Found
           schema:
             type: string
         "503":
-          description: error
+          description: Service Unavailable
           schema:
             type: string
       summary: Get product by ID
       tags:
-      - products
+      - Products
     put:
       consumes:
       - application/json
-      description: Update product by ID
+      description: UpdateProduct product by ID
       parameters:
       - description: Product ID
         in: path
         name: id
         required: true
         type: integer
-      - description: Update product
+      - description: UpdateProduct product
         in: body
         name: product
         required: true
@@ -125,20 +125,20 @@ paths:
       - application/json
       responses:
         "200":
-          description: updated
+          description: OK
           schema:
             type: string
         "404":
-          description: error
+          description: Not Found
           schema:
             type: string
         "503":
-          description: error
+          description: Service Unavailable
           schema:
             type: string
-      summary: Update product by ID
+      summary: UpdateProduct product by ID
       tags:
-      - products
+      - Products
   /api/products:
     get:
       consumes:
@@ -154,10 +154,10 @@ paths:
               $ref: '#/definitions/models.Product'
             type: array
         "503":
-          description: error
+          description: Service Unavailable
           schema:
             type: string
       summary: Get all products
       tags:
-      - products
+      - Products
 swagger: "2.0"

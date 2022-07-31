@@ -16,7 +16,7 @@
     "paths": {
         "/api/product": {
             "post": {
-                "description": "Register product",
+                "description": "Add a new product",
                 "consumes": [
                     "application/json"
                 ],
@@ -24,7 +24,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
                 "summary": "Add a new product",
                 "parameters": [
@@ -46,7 +46,7 @@
                         }
                     },
                     "400": {
-                        "description": "error",
+                        "description": "Bad Request",
                         "schema": {
                             "type": "string"
                         }
@@ -64,13 +64,13 @@
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
                 "summary": "Get product by ID",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Product ID",
+                        "description": "GetSingleProduct ID",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -84,13 +84,13 @@
                         }
                     },
                     "404": {
-                        "description": "error",
+                        "description": "Not Found",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "503": {
-                        "description": "error",
+                        "description": "Service Unavailable",
                         "schema": {
                             "type": "string"
                         }
@@ -98,7 +98,7 @@
                 }
             },
             "put": {
-                "description": "Update product by ID",
+                "description": "UpdateProduct product by ID",
                 "consumes": [
                     "application/json"
                 ],
@@ -106,9 +106,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
-                "summary": "Update product by ID",
+                "summary": "UpdateProduct product by ID",
                 "parameters": [
                     {
                         "type": "integer",
@@ -118,7 +118,7 @@
                         "required": true
                     },
                     {
-                        "description": "Update product",
+                        "description": "UpdateProduct product",
                         "name": "product",
                         "in": "body",
                         "required": true,
@@ -129,19 +129,19 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "updated",
+                        "description": "OK",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "404": {
-                        "description": "error",
+                        "description": "Not Found",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "503": {
-                        "description": "error",
+                        "description": "Service Unavailable",
                         "schema": {
                             "type": "string"
                         }
@@ -157,7 +157,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
                 "summary": "Remove product by ID",
                 "parameters": [
@@ -171,7 +171,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "deleted",
+                        "description": "OK",
                         "schema": {
                             "type": "string"
                         }
@@ -183,7 +183,7 @@
                         }
                     },
                     "503": {
-                        "description": "error",
+                        "description": "Service Unavailable",
                         "schema": {
                             "type": "string"
                         }
@@ -201,7 +201,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
                 "summary": "Get all products",
                 "responses": {
@@ -215,7 +215,7 @@
                         }
                     },
                     "503": {
-                        "description": "error",
+                        "description": "Service Unavailable",
                         "schema": {
                             "type": "string"
                         }

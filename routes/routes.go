@@ -18,11 +18,11 @@ func New() *fiber.App {
 
 	api := app.Group("/api")
 	api.Get("/hello", handlers.Hello)
-	api.Get("/products", handlers.AllProducts)
+	api.Get("/products", handlers.GetAllProducts)
 	api.Post("/product", handlers.AddProduct)
-	api.Get("/product/:id", handlers.Product)
-	api.Put("/product/:id", handlers.Update)
-	api.Delete("/product/:id", handlers.Delete)
+	api.Get("/product/:id", handlers.GetSingleProduct)
+	api.Put("/product/:id", handlers.UpdateProduct)
+	api.Delete("/product/:id", handlers.DeleteProduct)
 	app.Get("/*", swagger.HandlerDefault)
 
 	return app

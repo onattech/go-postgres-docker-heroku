@@ -24,7 +24,7 @@ const docTemplate = `{
     "paths": {
         "/api/product": {
             "post": {
-                "description": "Register product",
+                "description": "Add a new product",
                 "consumes": [
                     "application/json"
                 ],
@@ -32,7 +32,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
                 "summary": "Add a new product",
                 "parameters": [
@@ -54,7 +54,7 @@ const docTemplate = `{
                         }
                     },
                     "400": {
-                        "description": "error",
+                        "description": "Bad Request",
                         "schema": {
                             "type": "string"
                         }
@@ -72,13 +72,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
                 "summary": "Get product by ID",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Product ID",
+                        "description": "GetSingleProduct ID",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -92,13 +92,13 @@ const docTemplate = `{
                         }
                     },
                     "404": {
-                        "description": "error",
+                        "description": "Not Found",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "503": {
-                        "description": "error",
+                        "description": "Service Unavailable",
                         "schema": {
                             "type": "string"
                         }
@@ -106,7 +106,7 @@ const docTemplate = `{
                 }
             },
             "put": {
-                "description": "Update product by ID",
+                "description": "UpdateProduct product by ID",
                 "consumes": [
                     "application/json"
                 ],
@@ -114,9 +114,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
-                "summary": "Update product by ID",
+                "summary": "UpdateProduct product by ID",
                 "parameters": [
                     {
                         "type": "integer",
@@ -126,7 +126,7 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "Update product",
+                        "description": "UpdateProduct product",
                         "name": "product",
                         "in": "body",
                         "required": true,
@@ -137,19 +137,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "updated",
+                        "description": "OK",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "404": {
-                        "description": "error",
+                        "description": "Not Found",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "503": {
-                        "description": "error",
+                        "description": "Service Unavailable",
                         "schema": {
                             "type": "string"
                         }
@@ -165,7 +165,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
                 "summary": "Remove product by ID",
                 "parameters": [
@@ -179,7 +179,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "deleted",
+                        "description": "OK",
                         "schema": {
                             "type": "string"
                         }
@@ -191,7 +191,7 @@ const docTemplate = `{
                         }
                     },
                     "503": {
-                        "description": "error",
+                        "description": "Service Unavailable",
                         "schema": {
                             "type": "string"
                         }
@@ -209,7 +209,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "products"
+                    "Products"
                 ],
                 "summary": "Get all products",
                 "responses": {
@@ -223,7 +223,7 @@ const docTemplate = `{
                         }
                     },
                     "503": {
-                        "description": "error",
+                        "description": "Service Unavailable",
                         "schema": {
                             "type": "string"
                         }

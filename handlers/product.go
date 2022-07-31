@@ -20,13 +20,13 @@ func Hello(c *fiber.Ctx) error {
 
 // AddProduct adds a new product
 // @Summary     Add a new product
-// @Description Register product
-// @Tags        products
+// @Description Add a new product
+// @Tags        Products
 // @Accept      json
 // @Produce     json
 // @Param       product body     models.Product true "Register product"
 // @Success     200     {object} models.Product{}
-// @Failure     400     {string} string "error"
+// @Failure     400     {string} string
 // @Router      /api/product [post]
 func AddProduct(c *fiber.Ctx) error {
 	product := new(models.Product)
@@ -34,58 +34,58 @@ func AddProduct(c *fiber.Ctx) error {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	database.DB.Create(&product)
+	database.DB.Create(product)
 
 	return c.Status(200).JSON(product)
 }
 
-// AllProducts is a function to get all products data from database
+// GetAllProducts is a function to get all products data from database
 // @Summary     Get all products
 // @Description Get all products
-// @Tags        products
+// @Tags        Products
 // @Accept      json
 // @Produce     json
 // @Success     200 {array}  models.Product{}
-// @Failure     503     {string} string         "error"
+// @Failure     503     {string} string
 // @Router      /api/products [get]
-func AllProducts(c *fiber.Ctx) error {
+func GetAllProducts(c *fiber.Ctx) error {
 	products := []models.Product{}
 	database.DB.Find(&products)
 	return c.Status(200).JSON(products)
 }
 
-// Single Product
-// Product is a function to get a product by ID
+// Single GetSingleProduct
+// GetSingleProduct is a function to get a product by ID
 // @Summary     Get product by ID
 // @Description Get product by ID
-// @Tags        products
+// @Tags        Products
 // @Accept      json
 // @Produce     json
-// @Param       id  path     int true "Product ID"
+// @Param       id  path     int true "GetSingleProduct ID"
 // @Success     200 {object} models.Product{}
-// @Failure     404     {object} string         "error"
-// @Failure     503 {string} string "error"
+// @Failure     404     {object} string
+// @Failure     503 {string} string
 // @Router      /api/product/{id} [get]
-func Product(c *fiber.Ctx) error {
+func GetSingleProduct(c *fiber.Ctx) error {
 	product := models.Product{}
 	database.DB.Where("id = ?", c.Params("id")).Find(&product)
 	return c.Status(200).JSON(product)
 }
 
-// Update Single Product
+// UpdateProduct Single Product
 // Product is a function to update a product by ID
-// @Summary     Update product by ID
-// @Description Update product by ID
-// @Tags        products
+// @Summary     UpdateProduct product by ID
+// @Description UpdateProduct product by ID
+// @Tags        Products
 // @Accept      json
 // @Produce     json
 // @Param       id      path     int            true "Product ID"
-// @Param       product body     models.Product true "Update product"
-// @Success     200     {string} string         "updated"
-// @Failure     404 {object} string "error"
-// @Failure     503 {string} string "error"
+// @Param       product body     models.Product true "UpdateProduct product"
+// @Success     200     {string} string
+// @Failure     404 {object} string
+// @Failure     503 {string} string
 // @Router      /api/product/{id} [put]
-func Update(c *fiber.Ctx) error {
+func UpdateProduct(c *fiber.Ctx) error {
 	product := new(models.Product)
 	if err := c.BodyParser(product); err != nil {
 		return c.Status(400).JSON(err.Error())
@@ -99,15 +99,15 @@ func Update(c *fiber.Ctx) error {
 // DeleteProduct function removes a product by ID
 // @Summary     Remove product by ID
 // @Description Remove product by ID
-// @Tags        products
+// @Tags        Products
 // @Accept      json
 // @Produce     json
-// @Param       id  path     int    true "Product ID"
-// @Success     200 {string} string "deleted"
-// @Failure     404 {string} string "Not Found"
-// @Failure     503 {string} string "error"
+// @Param       id  path     int true "Product ID"
+// @Success     200 {string} string
+// @Failure     404 {string} string
+// @Failure     503 {string} string
 // @Router      /api/product/{id} [delete]
-func Delete(c *fiber.Ctx) error {
+func DeleteProduct(c *fiber.Ctx) error {
 	product := models.Product{}
 
 	database.DB.Where("id = ?", c.Params("id")).Delete(&product)
