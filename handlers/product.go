@@ -91,9 +91,9 @@ func UpdateProduct(c *fiber.Ctx) error {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	database.DB.Model(&product).Where("id = ?", c.Params("id")).Updates(product)
+	database.DB.Model(product).Where("id = ?", c.Params("id")).Updates(product)
 
-	return c.Status(200).JSON("updated")
+	return c.Status(200).JSON("update successful")
 }
 
 // DeleteProduct function removes a product by ID
@@ -108,9 +108,9 @@ func UpdateProduct(c *fiber.Ctx) error {
 // @Failure     503 {string} string
 // @Router      /api/product/{id} [delete]
 func DeleteProduct(c *fiber.Ctx) error {
-	product := models.Product{}
+	product := new(models.Product)
 
-	database.DB.Where("id = ?", c.Params("id")).Delete(&product)
+	database.DB.Where("id = ?", c.Params("id")).Delete(product)
 
-	return c.Status(200).JSON("deleted")
+	return c.Status(200).JSON("deletion successful")
 }
